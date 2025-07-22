@@ -1,0 +1,4 @@
+streamlit
+scikit-image
+scikit-learn
+joblib
