@@ -1,4 +1,7 @@
-streamlit
-scikit-image
+numpy==2.3.1
+scikit-image==0.25.2
 scikit-learn==1.7.1
-joblib
+matplotlib==3.10.3
+joblib==1.5.1
+pillow==11.3.0
+threadpoolctl==3.6.0
