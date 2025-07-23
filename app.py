@@ -18,9 +18,18 @@ IMAGE_SHAPE = (128, 128)
 def load_resources():
     """
     Carga el modelo RandomForest y el codebook preentrenados desde archivos pickle.
+    Asegura que los archivos se carguen desde el mismo directorio que este script.
     """
-    rf = joblib.load('rf_model.pkl')
-    codebook = joblib.load('codebook.pkl')
+    # Obtiene el directorio donde está este script
+    dir_path = os.path.dirname(os.path.abspath(__file__))
+    rf_path = os.path.join(dir_path, 'rf_model.pkl')
+    cb_path = os.path.join(dir_path, 'codebook.pkl')
+    # Verifica existencia de archivos
+    if not os.path.isfile(rf_path) or not os.path.isfile(cb_path):
+        raise FileNotFoundError(f"Archivos rf_model.pkl o codebook.pkl no encontrados en {dir_path}")
+    # Carga con joblib
+    rf = joblib.load(rf_path)
+    codebook = joblib.load(cb_path)
     return rf, codebook
 
 # Cargar recursos
